@@ -9,6 +9,7 @@ namespace MatchmakingPlatform.Domain.Profiles
         public MatchmakingPlatformProfiles()
         {
             CreateMap<Player, CreatePlayerDto>().ReverseMap();
+            CreateMap<Player, PlayerDetails>().ReverseMap();
         }
     }
 }

@@ -19,5 +19,11 @@ namespace MatchmakingPlatform.Infastructure.Repositories
 
             return player;
         }
+
+        public Player GetPlayer(Guid id)
+        {
+            var player = _context.Players.FirstOrDefault(p => p.Id == id);
+            return player;
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace MatchmakingPlatform.Application.Interface
 {
     public interface IPlayerService
     {
-        Player CreatePlayer(CreatePlayerDto createPlayerDto);
+        PlayerDetails CreatePlayer(CreatePlayerDto createPlayerDto);
+        PlayerDetails GetPlayer(Guid id);
     }
 }

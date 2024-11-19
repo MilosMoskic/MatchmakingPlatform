@@ -16,7 +16,7 @@ namespace MatchmakingPlatform.Application.Services
             _mapper = mapper;
         }
 
-        public Player CreatePlayer(CreatePlayerDto createPlayerDto)
+        public PlayerDetails CreatePlayer(CreatePlayerDto createPlayerDto)
         {
 
             var mappedPlayer = _mapper.Map<Player>(createPlayerDto);
@@ -29,6 +29,17 @@ namespace MatchmakingPlatform.Application.Services
             mappedPlayer.RatingAdjustment = null;
 
             _playerRepository.CreatePlayer(mappedPlayer);
+
+            var addedPlayer = _mapper.Map<PlayerDetails>(mappedPlayer);
+
+            return addedPlayer;
+        }
+
+        public PlayerDetails GetPlayer(Guid id)
+        {
+            var player = _playerRepository.GetPlayer(id);
+
+            var mappedPlayer = _mapper.Map<PlayerDetails>(player);
 
             return mappedPlayer;
         }
