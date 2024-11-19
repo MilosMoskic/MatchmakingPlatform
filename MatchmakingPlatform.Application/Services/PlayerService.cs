@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MatchmakingPlatform.Application.Exceptions;
 using MatchmakingPlatform.Application.Interface;
 using MatchmakingPlatform.Domain.Dto;
 using MatchmakingPlatform.Domain.Interfaces;
@@ -18,8 +19,12 @@ namespace MatchmakingPlatform.Application.Services
 
         public PlayerDetails CreatePlayer(CreatePlayerDto createPlayerDto)
         {
-
             var mappedPlayer = _mapper.Map<Player>(createPlayerDto);
+
+            if (_playerRepository.PlayerExists(mappedPlayer.Nickname) != null)
+            {
+                throw new ConfictException("Player with that Nickname already exists.");
+            }
 
             mappedPlayer.Wins = 0;
             mappedPlayer.Losses = 0;
@@ -38,6 +43,11 @@ namespace MatchmakingPlatform.Application.Services
         public PlayerDetails GetPlayer(Guid id)
         {
             var player = _playerRepository.GetPlayer(id);
+
+            if (player == null)
+            {
+                throw new NotFoundException("Player with this id doesn't exist");
+            }
 
             var mappedPlayer = _mapper.Map<PlayerDetails>(player);
 

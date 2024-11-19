@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using MatchmakingPlatform.Application.Interface;
+using MatchmakingPlatform.Application.Middleware;
 using MatchmakingPlatform.Application.Services;
 using MatchmakingPlatform.Domain.Interfaces;
 using MatchmakingPlatform.Infastructure.Context;
@@ -28,6 +29,8 @@ builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

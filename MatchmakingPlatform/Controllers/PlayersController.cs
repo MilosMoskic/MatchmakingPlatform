@@ -16,27 +16,14 @@ namespace MatchmakingPlatform.Controllers
         [HttpPost("create")]
         public ActionResult CreatePlayer([FromBody] CreatePlayerDto createPlayerDto)
         {
-            try
-            {
-                _playerService.CreatePlayer(createPlayerDto);
-                return Ok(createPlayerDto);
-            }
-            catch (Exception ex)
-            {
-                return Conflict(new { Message = "Player with this username already exists." });
-            }
+            _playerService.CreatePlayer(createPlayerDto);
+            return Ok(createPlayerDto);
         }
 
         [HttpGet("{id}")]
         public ActionResult GetPlayer(Guid id)
         {
             var player = _playerService.GetPlayer(id);
-
-            if(player == null)
-            {
-                return NotFound(new { Message = "Player with that id doesn't exist." });
-            }
-
             return Ok(player);
         }
     }
