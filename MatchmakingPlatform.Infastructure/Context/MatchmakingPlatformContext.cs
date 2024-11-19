@@ -10,5 +10,11 @@ namespace MatchmakingPlatform.Infastructure.Context
         }
 
         public DbSet<Player> Players { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Player>()
+                .HasIndex(p => p.Nickname)
+                .IsUnique();
+        }
     }
 }

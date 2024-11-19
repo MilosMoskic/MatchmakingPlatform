@@ -11,7 +11,7 @@ namespace MatchmakingPlatform.Domain.Models
         public int Losses { get; set; }
         public int Elo { get; set; }
         public int HoursPlayed { get; set; }
-        public string Team { get; set; }
-        public int RatingAdjustment { get; set; }
+        public string? Team { get; set; }
+        public int? RatingAdjustment { get; set; }
     }
 }

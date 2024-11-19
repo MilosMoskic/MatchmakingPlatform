@@ -4,6 +4,7 @@ using MatchmakingPlatform.Infastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatchmakingPlatform.Infastructure.Migrations
 {
     [DbContext(typeof(MatchmakingPlatformContext))]
-    partial class MatchmakingPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20241119153737_made properties nullable")]
+    partial class madepropertiesnullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +41,7 @@ namespace MatchmakingPlatform.Infastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nickname")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("RatingAdjustment")
                         .HasColumnType("int");
@@ -50,10 +53,6 @@ namespace MatchmakingPlatform.Infastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Nickname")
-                        .IsUnique()
-                        .HasFilter("[Nickname] IS NOT NULL");
 
                     b.ToTable("Players");
                 });
