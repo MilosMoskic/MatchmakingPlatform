@@ -4,6 +4,7 @@ using MatchmakingPlatform.Infastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatchmakingPlatform.Infastructure.Migrations
 {
     [DbContext(typeof(MatchmakingPlatformContext))]
-    partial class MatchmakingPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20241119204200_Created Team Entity")]
+    partial class CreatedTeamEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

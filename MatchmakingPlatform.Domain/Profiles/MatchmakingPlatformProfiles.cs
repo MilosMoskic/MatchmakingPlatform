@@ -10,6 +10,11 @@ namespace MatchmakingPlatform.Domain.Profiles
         {
             CreateMap<Player, CreatePlayerDto>().ReverseMap();
             CreateMap<Player, PlayerDetails>().ReverseMap();
+            CreateMap<Player, PlayerDto>().ReverseMap();
+            CreateMap<Team, TeamDetails>()
+                .ForMember(dest => dest.Players, opt => opt.MapFrom(src => src.Players)).ReverseMap();
+            CreateMap<CreateTeamDto, Team>()
+                .ForMember(dest => dest.Players, opt => opt.Ignore()).ReverseMap();
         }
     }
 }

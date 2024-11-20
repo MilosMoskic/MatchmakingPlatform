@@ -16,8 +16,8 @@ namespace MatchmakingPlatform.Controllers
         [HttpPost("create")]
         public ActionResult CreatePlayer([FromBody] CreatePlayerDto createPlayerDto)
         {
-            _playerService.CreatePlayer(createPlayerDto);
-            return Ok(createPlayerDto);
+            var player = _playerService.CreatePlayer(createPlayerDto);
+            return Ok(player);
         }
 
         [HttpGet("{id}")]
