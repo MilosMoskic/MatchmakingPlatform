@@ -11,6 +11,7 @@ namespace MatchmakingPlatform.Application.Services
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly IMapper _mapper;
+
         public PlayerService(IPlayerRepository playerRepository, IMapper mapper)
         {
             _playerRepository = playerRepository;

@@ -8,6 +8,7 @@ namespace MatchmakingPlatform.Controllers
     public class PlayersController : Controller
     {
         private readonly IPlayerService _playerService;
+
         public PlayersController(IPlayerService playerService)
         {
             _playerService = playerService;

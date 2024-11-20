@@ -1,12 +1,14 @@
 ﻿using MatchmakingPlatform.Domain.Interfaces;
 using MatchmakingPlatform.Domain.Models;
 using MatchmakingPlatform.Infastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace MatchmakingPlatform.Infastructure.Repositories
 {
     public class PlayerRepository : IPlayerRepository
     {
         private readonly MatchmakingPlatformContext _context;
+
         public PlayerRepository(MatchmakingPlatformContext context)
         {
             _context = context;
@@ -22,7 +24,7 @@ namespace MatchmakingPlatform.Infastructure.Repositories
 
         public Player GetPlayer(Guid id)
         {
-            var player = _context.Players.FirstOrDefault(p => p.Id == id);
+            var player = _context.Players.Include(p => p.Team).FirstOrDefault(p => p.Id == id);
             return player;
         }
 

@@ -9,6 +9,7 @@ namespace MatchmakingPlatform.Controllers
     public class TeamsController : Controller
     {
         private readonly ITeamService _teamService;
+
         public TeamsController(ITeamService teamService)
         {
             _teamService = teamService;
