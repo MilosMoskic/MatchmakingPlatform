@@ -4,6 +4,7 @@ using MatchmakingPlatform.Application.Interface;
 using MatchmakingPlatform.Domain.Dto;
 using MatchmakingPlatform.Domain.Interfaces;
 using MatchmakingPlatform.Domain.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MatchmakingPlatform.Application.Services
 {
@@ -37,6 +38,13 @@ namespace MatchmakingPlatform.Application.Services
             if (_teamRepository.GetTeam(createMatchDto.Team2Id) == null)
             {
                 throw new NotFoundException($"Team with {createMatchDto.Team2Id} doesn't exist.");
+            }
+
+            if (createMatchDto.WinningTeamId == null &&
+                createMatchDto.WinningTeamId != createMatchDto.Team1Id &&
+                createMatchDto.WinningTeamId != createMatchDto.Team2Id)
+            {
+                throw new BadRequestException("There must be a winning team");
             }
 
             var mappedMatch = _mapper.Map<Match>(createMatchDto);
