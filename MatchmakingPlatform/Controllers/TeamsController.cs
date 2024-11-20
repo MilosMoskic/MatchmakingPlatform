@@ -15,9 +15,16 @@ namespace MatchmakingPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTeam([FromBody] CreateTeamDto teamDto)
+        public ActionResult CreateTeam([FromBody] CreateTeamDto teamDto)
         {
             var team = _teamService.CreateTeam(teamDto);
+            return Ok(team);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetTeam(Guid id)
+        {
+            var team = _teamService.GetTeam(id);
             return Ok(team);
         }
     }

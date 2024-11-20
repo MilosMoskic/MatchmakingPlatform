@@ -28,10 +28,10 @@ namespace MatchmakingPlatform.Infastructure.Repositories
             return team;
         }
 
-        public Team GetTeamByName(string teamName)
+        public Team GetTeam(Guid id)
         {
-            return _context.Teams.Include(t => t.Players)
-                                 .FirstOrDefault(t => t.Teamname == teamName);
+            var team = _context.Teams.Include(t => t.Players).FirstOrDefault(t => t.Id == id);
+            return team;
         }
     }
 }

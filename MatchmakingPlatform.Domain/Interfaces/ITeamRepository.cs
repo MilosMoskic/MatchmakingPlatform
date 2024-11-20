@@ -6,6 +6,6 @@ namespace MatchmakingPlatform.Domain.Interfaces
     {
         Team CreateTeam(Team team);
         Team TeamExists(string teamname);
-        Team GetTeamByName(string teamName);
+        Team GetTeam(Guid id);
     }
 }

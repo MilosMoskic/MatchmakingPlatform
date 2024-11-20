@@ -56,5 +56,19 @@ namespace MatchmakingPlatform.Application.Services
 
             return teamDetails;
         }
+
+        public TeamDetails GetTeam(Guid id)
+        {
+            var team = _teamRepository.GetTeam(id);
+
+            if (team == null)
+            {
+                throw new NotFoundException("Team with that Id doesn't exist.");
+            }
+
+            var teamDetails = _mapper.Map<TeamDetails>(team);
+
+            return teamDetails;
+        }
     }
 }
