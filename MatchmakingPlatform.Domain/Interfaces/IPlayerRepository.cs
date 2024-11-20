@@ -7,5 +7,6 @@ namespace MatchmakingPlatform.Domain.Interfaces
         Player CreatePlayer(Player player);
         Player GetPlayer(Guid id);
         Player PlayerExists(string nickaname);
+        Player UpdatePlayer(Player player);
     }
 }

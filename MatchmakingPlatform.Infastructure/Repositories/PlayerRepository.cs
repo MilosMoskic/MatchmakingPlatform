@@ -31,5 +31,12 @@ namespace MatchmakingPlatform.Infastructure.Repositories
             var player = _context.Players.FirstOrDefault(p => p.Nickname == nickaname);
             return player;
         }
+
+        public Player UpdatePlayer(Player player)
+        {
+            _context.Players.Update(player);
+            _context.SaveChanges();
+            return player;
+        }
     }
 }
