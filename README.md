@@ -5,52 +5,19 @@ This is a matchmaking platform designed for players to track their performance, 
 ## Technologies Used
 
 - C# & .NET 9: The backend application is built using C# and .NET.
-- Microsoft SQL Server: The database is powered by Microsoft SQL Server, and you can manage it using SSMS.
+- In Memory Database
 - AutoMapper: Used for mapping between different DTOs and models.
 - Entity Framework Core: Used for database access and object-relational mapping (ORM).
 
-## Database Setup (Code-First Approach)
-The application uses Entity Framework Core with the Code-First approach for creating and managing the database schema. This means the database is generated from C# model classes, and migrations are used to update the database schema.
-### Step 1: Configure the Connection String
- - Open appsettings.json in your project.
- - Ensure that the connection string points to your SQL Server instance. Example:
-```charp
-  {
-    "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Database=MatchmakingPlatform;Trusted_Connection=True;MultipleActiveResultSets=true"
-    }
-  }
-```
-### Step 2: Add Entity Framework Core NuGet Packages
-If you haven't already, install the required Entity Framework Core packages to your project using NuGet Package Manager or via the Package Manager Console.
+## Database Setup 
 
-For SQL Server, you can install the following packages:
+For Database Setup, you can install the following packages:
 ```bash
-Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.InMemory
+Install-Package Microsoft.EntityFrameworkCore
 Install-Package Microsoft.EntityFrameworkCore.Tools
 ```
-### Step 3: Run Migrations
-Create a Migration: Open Package Manager Console in Visual Studio (Tools > NuGet Package Manager > Package Manager Console) and run the following command to create the first migration:
 
-```bash
-Add-Migration InitialCreate
-```
-This will generate migration files that define the database schema.
-
-Apply the Migration to the Database: Once the migration is created, apply it to the database with:
-
-```bash
-Update-Database
-```
-This command will create the necessary tables in the SQL Server database based on the models you've defined.
-
-## Building and Running the Application
-### Step 1: Clone the Repository
-If you haven't already, clone this repository to your local machine.
-
-```bash
-git clone https://github.com/yourusername/MatchmakingPlatform.git
-```
 ### Step 2: Open the Solution in Visual Studio 
 
 - Launch Visual Studio 2022.
